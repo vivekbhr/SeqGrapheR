@@ -5,7 +5,15 @@
 #' does not take any parameters. Note that SeqGrapheR require external programs
 #' blastall and dotter for some functions.  
 #' 
-#' @export 
+#' @export SeqGrapheR
+#' @import Biostrings
+#' @importFrom gWidgets svalue gconfirm gfile ginput delete gmessage galert dispose ggroup ggraphics gslider glabel gwindow gtable gbutton size addhandlerdestroy gmenu gframe gimage addSpace glayout gtext gstatusbar visible  
+#' @importFrom igraph fastgreedy.community "V<-" community.to.membership  membership vcount graph.data.frame simplify V E get.edgelist neighborhood  degree ecount layout.fruchterman.reingold induced.subgraph    
+#' @importFrom rggobi edges "edges<-" ids ggobi "glyph_colour<-" "glyph_type<-" "glyph_size<-" glyph_colour ggobi_count ggobi_get glyph_type glyph_size displays pmode ggobi_display_get_tour_projection colorscheme "$<-.GGobi" "[[.GGobi" "ids<-" "[<-.GGobi" "[.GGobi" "[[<-.GGobi" "$<-.GGobi" "[.GGobiData" "[[<-.GGobiData" "[[.GGobiData" "$<-.GGobiData" "$.GGobiData" "variables<-" "shadowed<-" 
+#' @import gWidgetsRGtk2
+#' @import cairoDevice
+#' @importMethodsFrom igraph
+#' @importMethodsFrom rggobi
 #' @examples 
 #' ## do nut run!
 #' ## SeqGrapheR()
@@ -13,17 +21,19 @@
 
 SeqGrapheR=function(){    # main function
 	options(warn=-1)
-	suppressPackageStartupMessages(library(Biostrings,quietly=TRUE,verbose=FALSE))
-	suppressPackageStartupMessages(library(igraph,quietly=TRUE,verbose=FALSE))
-	suppressPackageStartupMessages(library(gWidgets,quietly=TRUE,verbose=FALSE))
-	suppressPackageStartupMessages(library(rggobi,quietly=TRUE,verbose=FALSE))
-	suppressPackageStartupMessages(library(gWidgetsRGtk2,quietly=TRUE,verbose=FALSE))
-	suppressPackageStartupMessages(library(cairoDevice,quietly=TRUE,verbose=FALSE))
 	options("guiToolkit"="RGtk2")
+	#check for Biostring version
+	if (exists("readDNAStringSet")){
+			read.DNAStringSet=readDNAStringSet
+			read.BStringSet=readBStringSet
+			write.XStringSet=writeXStringSet
+			
+		}
 	
 	
 	########################## INTERNAL  FUNCTIONS ################################################################
-	######################################################################################################
+	########################install.packages("SeqGrapheR_0.4.8.3.tar.gz",repos=NULL)##############################################################################
+	
 	
 	formatDNA=function(dna,width=60){
 		N=nchar(dna)
@@ -134,7 +144,7 @@ SeqGrapheR=function(){    # main function
 		if (is.null(seq2)) {
 			seq2=seq1	
 		}
-		require(Biostrings)
+		
 		if (class(seq1)!="DNAStringSet"){
 			seq1=DNAStringSet(seq1)
 		}
@@ -370,7 +380,7 @@ SeqGrapheR=function(){    # main function
 			N=length(importedList)
 			df=importedList[seq(1,N,2)]
 			df=gsub(">","",df,fixed=TRUE)
-			df=gsub("\t"," ",df,fixed=TRUE) # alternative separators
+			df=gsub("\t"," ",df,fixed=TRUE) # alternative separatorsaddhandlerdestroy
 			df=strsplit(df,split=" ")
 			Group=sapply(df,FUN=function(x)x[1])
 			Subset=sapply(df,FUN=function(x)x[2])

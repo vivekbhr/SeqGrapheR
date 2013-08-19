@@ -9,11 +9,5 @@
 #' @title Simple GUI for graph based visualization of cluster of DNA sequence reads
 #' @author Petr Novak \email{petr<at>umbr.cas.cz}
 #' @keywords package
-#' @import Biostrings
-#' @import igraph
-#' @import gWidgets
-#' @import rggobi
-#' @import gWidgetsRGtk2
-#' @import cairoDevice
 NULL
 

@@ -1,9 +1,9 @@
-4ee20b1f5f02f7de906eb6698ded4173 *DESCRIPTION
-359f92c504e9f53ca98e18321f3b3746 *NAMESPACE
-179d56b670330f4256e7faea123fedb7 *R/SeqGrapheR-package.R
-9c8f637b2ffe9abe031f50d64658484c *R/SeqGrapheR.R
+4d5163e0f446d20a592a36459d33e969 *DESCRIPTION
+9b8b04e58f0821f8b5698054eea78cef *NAMESPACE
+a9444678101af4292f94d762953ce9f1 *R/SeqGrapheR-package.R
+726a65a91996af399d008b5038a1a8d6 *R/SeqGrapheR.R
 1b0b6390c0e86bd99fef6bc132f5e001 *inst/doc/SeqGrapheR.Rnw
-6349918036b7552e938b9e636c68ef5c *inst/doc/SeqGrapheR.pdf
+fbc41e7ee909eaf7df16f07b3cd63726 *inst/doc/SeqGrapheR.pdf
 e7f99114a2ad3028a5b20098d2893b10 *inst/images/color1.png
 36950fa98f22f5faff8f3078273b94da *inst/images/color2.png
 dba3f5d0ba7b26dd7fe3af18d1af62ab *inst/images/color3.png
@@ -36,3 +36,5 @@ b8ccfa07c997c3e2e6570fe912f8d7c2 *inst/images/size5.png
 add66c36afed9dbae75b0df91b2927e9 *inst/images/yellowArrow2.png
 30886752255f44181436177028b5e0fc *man/SeqGrapheR-package.Rd
 1522ec7c086572e26f25e4fc1b5d15f4 *man/SeqGrapheR.Rd
+1b0b6390c0e86bd99fef6bc132f5e001 *vignettes/SeqGrapheR.Rnw
+fbc41e7ee909eaf7df16f07b3cd63726 *vignettes/SeqGrapheR.pdf
