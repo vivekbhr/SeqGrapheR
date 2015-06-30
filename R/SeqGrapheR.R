@@ -8,7 +8,7 @@
 #' @export SeqGrapheR
 #' @import Biostrings
 #' @importFrom gWidgets svalue gconfirm gfile ginput delete gmessage galert dispose ggroup ggraphics gslider glabel gwindow gtable gbutton size addhandlerdestroy gmenu gframe gimage addSpace glayout gtext gstatusbar visible  
-#' @importFrom igraph fastgreedy.community "V<-" community.to.membership  membership vcount graph.data.frame simplify V E get.edgelist neighborhood  degree ecount layout.fruchterman.reingold induced.subgraph    
+#' @importFrom igraph fastgreedy.community "V<-" cutat  membership vcount graph.data.frame simplify V E get.edgelist neighborhood  degree ecount layout.fruchterman.reingold induced.subgraph    
 #' @importFrom rggobi edges "edges<-" ids ggobi "glyph_colour<-" "glyph_type<-" "glyph_size<-" glyph_colour ggobi_count ggobi_get glyph_type glyph_size displays pmode ggobi_display_get_tour_projection colorscheme "$<-.GGobi" "[[.GGobi" "ids<-" "[<-.GGobi" "[.GGobi" "[[<-.GGobi" "$<-.GGobi" "[.GGobiData" "[[<-.GGobiData" "[[.GGobiData" "$<-.GGobiData" "$.GGobiData" "variables<-" "shadowed<-" 
 #' @import gWidgetsRGtk2
 #' @import cairoDevice
@@ -57,7 +57,7 @@ SeqGrapheR=function(){    # main function
 	fastgreedy=function(GG){
 		eb=fastgreedy.community(GG)
 		cutoff=which(eb$modularity==max(eb$modularity))-1  # select cutoff
-		c2mb=community.to.membership(GG,eb$merges,cutoff)
+		c2mb=cutat(eb,cutoff)
 		mb=c2mb$membership
 		nc=length(unique(mb))   # number of clusters
 		N=vcount(GG) 
@@ -314,7 +314,7 @@ SeqGrapheR=function(){    # main function
 	
 	
 # show graph in ggobi 
-	showGraph=function(graphLayout,fgcolor=NULL){
+	showGraph=function(graphLayout,fgcolor="grey20"){ # changed from NULL : vivekB
 		gf=graphLayout$L
 		rownames(gf)=V(graphLayout$G)$name
 		ggobiObject=ggobi(gf)
